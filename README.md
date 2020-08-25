@@ -2,7 +2,7 @@
 
 
 
-### bitcoin done right
+### WeShareRich
 
 This is the Android port of the breadwallet iOS app, which can be found [here](https://github.com/breadwallet/breadwallet/).
 
