@@ -4,7 +4,7 @@
 
 ### WeShareRich
 
-This is the Android port of the breadwallet iOS app, which can be found [here](https://github.com/breadwallet/breadwallet/).
+Testing[here](https://github.com/breadwallet/breadwallet/).
 
 ### a completely standalone bitcoin wallet
 
