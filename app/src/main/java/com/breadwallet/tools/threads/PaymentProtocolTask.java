@@ -28,7 +28,6 @@ import com.breadwallet.wallet.WalletsMaster;
 import com.breadwallet.wallet.abstracts.BaseWalletManager;
 import com.breadwallet.wallet.wallets.CryptoTransaction;
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager;
 import com.google.protobuf.ByteString;
 import com.platform.APIClient;
 
@@ -314,9 +313,7 @@ public class PaymentProtocolTask extends AsyncTask<String, String, String> {
             allAddresses.append(output.getAddress()).append(", ");
         }
         final BaseWalletManager walletManager = WalletsMaster.getInstance().getCurrentWallet(mContext);
-        BRCoreWallet coreWallet = walletManager.getCurrencyCode().equalsIgnoreCase(WalletBitcoinManager.BITCOIN_CURRENCY_CODE)
-                ? ((WalletBitcoinManager) walletManager).getWallet()
-                : ((WalletBchManager) walletManager).getWallet();
+        BRCoreWallet coreWallet = ((WalletBitcoinManager) walletManager).getWallet()    ;
         final BRCoreTransaction transactionForOutputs = coreWallet.createTransactionForOutputs(mPaymentProtocolRequest.getOutputs());
         if (transactionForOutputs == null) {
             BRDialog.showSimpleDialog(mContext, mContext.getString(R.string.Send_insufficientFunds), "");

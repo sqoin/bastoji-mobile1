@@ -11,7 +11,7 @@ package com.breadwallet.crypto;
 import com.breadwallet.crypto.ethereum.Ethereum;
 
 public class Network {
-    enum Type { Bitcoin, Bitcash, Ethereum }
+    enum Type { Bitcoin, Ethereum }
 
     public static final class Bitcoin {
         final String name;

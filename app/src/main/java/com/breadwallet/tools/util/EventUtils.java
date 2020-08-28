@@ -85,7 +85,6 @@ public final class EventUtils {
     public static final String EVENT_SCAN_TORCH_OFF = "scan.torchOff";
     public static final String EVENT_SCAN_DISMISS = "scan.dismiss";
     public static final String EVENT_SCAN_BITCOIN_URI = "scan.bitcoinUri";
-    public static final String EVENT_SCAN_BCASH_ADDRESS = "scan.bCashAddr";
     public static final String EVENT_SCAN_ETH_ADDRESS = "scan.ethAddress";
     public static final String EVENT_SCAN_PRIVATE_KEY = "scan.privateKey";
     public static final String EVENT_SCAN_DEEP_LINK = "scan.deepLink";

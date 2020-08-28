@@ -28,7 +28,7 @@
 #include "BRChainParams.h"
 
 static const char *BRMainNetDNSSeeds[] = {
-        "dns1.sqoin.us","dns2.sqoin.us","dns3.sqoin.us",NULL
+        "dns1.sqoin.us","dns2.sqoin.us","dns3.sqoin.us","192.168.1.23",NULL
 };
 
 static const char *BRTestNetDNSSeeds[] = {
@@ -88,7 +88,7 @@ static int BRTestNetVerifyDifficulty(const BRMerkleBlock *block, const BRSet *bl
 static const BRChainParams BRMainNetParamsRecord = {
         BRMainNetDNSSeeds,
         7233,                  // standardPort
-        0xdab7e1f5,            // magicNumber
+        0xc7f0b9a8,            // magicNumber
         5, // services
         BRMainNetVerifyDifficulty,
         BRMainNetCheckpoints,

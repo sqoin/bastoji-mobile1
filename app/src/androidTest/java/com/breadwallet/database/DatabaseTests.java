@@ -19,7 +19,6 @@ import com.breadwallet.tools.sqlite.RatesDataSource;
 import com.breadwallet.tools.sqlite.MerkleBlockDataSource;
 import com.breadwallet.tools.sqlite.PeerDataSource;
 import com.breadwallet.tools.threads.executor.BRExecutor;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager;
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 
 import org.junit.After;
@@ -85,16 +84,12 @@ public class DatabaseTests {
         Activity app = mActivityRule.getActivity();
 
         BtcBchTransactionDataStore.getInstance(app).deleteAllTransactions(app, WalletBitcoinManager.BITCOIN_CURRENCY_CODE);
-        BtcBchTransactionDataStore.getInstance(app).deleteAllTransactions(app, WalletBchManager.BITCASH_CURRENCY_CODE);
 
         RatesDataSource.getInstance(app).deleteAllCurrencies(app, WalletBitcoinManager.BITCOIN_CURRENCY_CODE);
-        RatesDataSource.getInstance(app).deleteAllCurrencies(app, WalletBchManager.BITCASH_CURRENCY_CODE);
 
         MerkleBlockDataSource.getInstance(app).deleteAllBlocks(app, WalletBitcoinManager.BITCOIN_CURRENCY_CODE);
-        MerkleBlockDataSource.getInstance(app).deleteAllBlocks(app, WalletBchManager.BITCASH_CURRENCY_CODE);
 
         PeerDataSource.getInstance(app).deleteAllPeers(app, WalletBitcoinManager.BITCOIN_CURRENCY_CODE);
-        PeerDataSource.getInstance(app).deleteAllPeers(app, WalletBchManager.BITCASH_CURRENCY_CODE);
     }
 
     @After

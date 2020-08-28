@@ -33,7 +33,6 @@ import com.breadwallet.wallet.exceptions.FeeOutOfDate;
 import com.breadwallet.wallet.exceptions.InsufficientFundsException;
 import com.breadwallet.wallet.exceptions.SomethingWentWrong;
 import com.breadwallet.wallet.exceptions.SpendingNotAllowed;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager;
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletEthManager;
 
@@ -87,8 +86,7 @@ public class SendManager {
             long now = System.currentTimeMillis();
 
             // Check whether the fee (for BTC and BCH) value we have is old, then try updating the fee
-            if (walletManager.getCurrencyCode().equalsIgnoreCase(WalletBitcoinManager.BITCOIN_CURRENCY_CODE) ||
-                    walletManager.getCurrencyCode().equalsIgnoreCase(WalletBchManager.BITCASH_CURRENCY_CODE)) {
+            if (walletManager.getCurrencyCode().equalsIgnoreCase(WalletBitcoinManager.BITCOIN_CURRENCY_CODE)  ) {
 
                 if (now - BRSharedPrefs.getFeeTime(app, walletManager.getCurrencyCode()) >= FEE_EXPIRATION_MILLIS) {
                     new Thread(() -> {

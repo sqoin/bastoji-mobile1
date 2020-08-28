@@ -130,8 +130,6 @@ public class AddWalletsActivity extends BRActivity {
                 mAdapter.notifyDataSetChanged();
             }
         });
-        mRecycler.setLayoutManager(new LinearLayoutManager(this));
-        mRecycler.setAdapter(mAdapter);
 
     }
 

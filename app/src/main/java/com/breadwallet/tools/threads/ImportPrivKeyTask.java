@@ -38,7 +38,6 @@ import com.breadwallet.wallet.wallets.CryptoAddress;
 import com.breadwallet.wallet.wallets.CryptoTransaction;
 import com.breadwallet.wallet.wallets.bitcoin.BaseBitcoinWalletManager;
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager;
 import com.platform.APIClient;
 
 import org.json.JSONArray;
@@ -217,7 +216,7 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
             } else {
                 BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(() -> {
                     mTransaction.getCoreTx().sign(mKey, walletManager.getForkId());
-                    BRCorePeerManager peerManager = mCurrencyCode.equalsIgnoreCase("BTC") ? ((WalletBitcoinManager) walletManager).getPeerManager() : ((WalletBchManager) walletManager).getPeerManager();
+                    BRCorePeerManager peerManager =  ((WalletBitcoinManager) walletManager).getPeerManager() ;
 
                     if (!mTransaction.getCoreTx().isSigned()) {
                         String err = "transaction is not signed";

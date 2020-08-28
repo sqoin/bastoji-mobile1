@@ -12,7 +12,6 @@ import android.util.Log;
 import com.breadwallet.BuildConfig;
 import com.breadwallet.presenter.entities.BRTransactionEntity;
 import com.breadwallet.tools.manager.BRReportsManager;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -186,7 +185,6 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + TX_TABLE_NAME_OLD);
             db.execSQL("DROP TABLE IF EXISTS " + CURRENCY_TABLE_NAME_OLD);
 
-            copyTxsForBch(db);
 
             db.setTransactionSuccessful();
             Log.e(TAG, "migrateDatabases: SUCCESS");
@@ -211,45 +209,7 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    private void copyTxsForBch(SQLiteDatabase db) {
-        List<BRTransactionEntity> transactions = new ArrayList<>();
-        Cursor cursorGet = null;
-        int bCashForkBlockHeight = BuildConfig.BITCOIN_TESTNET ? 1155876 : 478559;
-        int bCashForkTimeStamp = BuildConfig.BITCOIN_TESTNET ? 1501597117 : 1501568580;
-        db.beginTransaction();
-        try {
-            cursorGet = db.query(BRSQLiteHelper.TX_TABLE_NAME,
-                    BtcBchTransactionDataStore.allColumns, BRSQLiteHelper.TX_ISO + "=? AND " + BRSQLiteHelper.TX_BLOCK_HEIGHT + " <?", new String[]{"BTC", String.valueOf(bCashForkBlockHeight)}, null, null, null);
 
-            cursorGet.moveToFirst();
-            while (!cursorGet.isAfterLast()) {
-                BRTransactionEntity transactionEntity = BtcBchTransactionDataStore.cursorToTransaction(null, "BTC", cursorGet);
-                transactions.add(transactionEntity);
-                cursorGet.moveToNext();
-            }
-
-            int count = 0;
-            for (BRTransactionEntity tx : transactions) {
-                ContentValues values = new ContentValues();
-                values.put(BRSQLiteHelper.TX_COLUMN_ID, tx.getTxHash());
-                values.put(BRSQLiteHelper.TX_BUFF, tx.getBuff());
-                values.put(BRSQLiteHelper.TX_BLOCK_HEIGHT, tx.getBlockheight());
-                values.put(BRSQLiteHelper.TX_ISO, WalletBchManager.BITCASH_CURRENCY_CODE);
-                values.put(BRSQLiteHelper.TX_TIME_STAMP, tx.getTimestamp());
-
-                db.insert(BRSQLiteHelper.TX_TABLE_NAME, null, values);
-                count++;
-
-            }
-            Log.e(TAG, "copyTxsForBch: copied: " + count);
-            db.setTransactionSuccessful();
-
-        } finally {
-            if (cursorGet != null)
-                cursorGet.close();
-            db.endTransaction();
-        }
-    }
 
     public void printTableStructures(SQLiteDatabase db, String tableName) {
         Log.e(TAG, "printTableStructures: " + tableName);

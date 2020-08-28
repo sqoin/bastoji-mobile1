@@ -1,6 +1,5 @@
 package com.breadwallet.tools.util;
 
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager;
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletEthManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletTokenManager;
@@ -39,10 +38,6 @@ public final class BRConstants {
     public static final ImmutableList<TokenListMetaData.TokenInfo> DEFAULT_WALLETS = new ImmutableList
             .Builder<TokenListMetaData.TokenInfo>()
             .add(new TokenListMetaData.TokenInfo(WalletBitcoinManager.BITCOIN_CURRENCY_CODE, false, null))
-            .add(new TokenListMetaData.TokenInfo(WalletBchManager.BITCASH_CURRENCY_CODE, false, null))
-            .add(new TokenListMetaData.TokenInfo(WalletEthManager.ETH_CURRENCY_CODE, false, null))
-            .add(new TokenListMetaData.TokenInfo(WalletTokenManager.BRD_CURRENCY_CODE, true, WalletTokenManager.BRD_CONTRACT_ADDRESS))
-            .add(new TokenListMetaData.TokenInfo(WalletTokenManager.TUSD_CURRENCY_CODE, true, WalletTokenManager.TUSD_CONTRACT_ADDRESS))
             .build();
     /**
      * Boolean values as Strings.

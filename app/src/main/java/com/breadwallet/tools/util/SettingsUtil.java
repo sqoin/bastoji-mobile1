@@ -48,7 +48,6 @@ import com.breadwallet.ui.settings.NotificationsSettingsActivity;
 import com.breadwallet.ui.pricealert.PriceAlertListActivity;
 import com.breadwallet.wallet.WalletsMaster;
 import com.breadwallet.wallet.abstracts.BaseWalletManager;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager;
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.platform.APIClient;
 import com.platform.HTTPServer;
@@ -200,13 +199,7 @@ public final class SettingsUtil {
             BRSharedPrefs.putCurrentWalletCurrencyCode(activity, walletBitcoinManager.getCurrencyCode());
             startCurrencySettings(activity);
         }, false, 0));
-        final WalletBchManager walletBchManager = WalletBchManager.getInstance(activity);
-        String bchSettingsLabel = String.format("%s %s", walletBchManager.getName(), activity.getString(R.string.Settings_title));
 
-        items.add(new BRSettingsItem(bchSettingsLabel, null, view -> {
-            BRSharedPrefs.putCurrentWalletCurrencyCode(activity, walletBchManager.getCurrencyCode());
-            startCurrencySettings(activity);
-        }, false, 0));
         items.add(new BRSettingsItem(activity.getString(R.string.Prompts_ShareData_title), null, view -> {
             Intent intent = new Intent(activity, ShareDataActivity.class);
             activity.startActivity(intent);
@@ -419,32 +412,7 @@ public final class SettingsUtil {
         return items;
     }
 
-    public static List<BRSettingsItem> getBitcoinCashSettings(final Context context) {
-        List<BRSettingsItem> items = new ArrayList<>();
-        items.add(new BRSettingsItem(context.getString(R.string.Settings_importTitle), "", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!UiUtils.isClickAllowed()) return;
-                Activity currentActivity = (Activity) v.getContext();
-                Intent intent = new Intent(currentActivity, ImportActivity.class);
-                currentActivity.startActivity(intent);
-                currentActivity.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-            }
-        }, false, 0));
 
-        items.add(new BRSettingsItem(context.getString(R.string.ReScan_header), "", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!UiUtils.isClickAllowed()) return;
-                Activity currentActivity = (Activity) v.getContext();
-                Intent intent = new Intent(currentActivity, SyncBlockchainActivity.class);
-                currentActivity.startActivity(intent);
-                currentActivity.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-            }
-        }, false, 0));
-
-        return items;
-    }
 
     /**
      * Displays an Alert Dialog with an input text field for entering a Bundle setting.

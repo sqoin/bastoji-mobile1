@@ -34,7 +34,6 @@ import com.breadwallet.tools.threads.executor.BRExecutor
 import com.breadwallet.ui.util.map
 import com.breadwallet.ui.util.mutableLiveData
 import com.breadwallet.ui.util.switchMap
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager
 import com.breadwallet.wallet.wallets.ethereum.WalletEthManager
 import com.breadwallet.wallet.wallets.ethereum.WalletTokenManager
@@ -124,8 +123,6 @@ class SelectAlertCryptoViewModel : ViewModel() {
                 when (tokenInfo.symbol) {
                     WalletBitcoinManager.BITCOIN_CURRENCY_CODE ->
                         TokenItem(null, WalletBitcoinManager.BITCOIN_CURRENCY_CODE, WalletBitcoinManager.NAME, null, true)
-                    WalletBchManager.BITCASH_CURRENCY_CODE ->
-                        TokenItem(null, WalletBchManager.BITCASH_CURRENCY_CODE, WalletBchManager.NAME, null, true)
                     WalletEthManager.ETH_CURRENCY_CODE ->
                         TokenItem(null, WalletEthManager.ETH_CURRENCY_CODE, WalletEthManager.NAME, null, true)
                     WalletTokenManager.BRD_CURRENCY_CODE ->

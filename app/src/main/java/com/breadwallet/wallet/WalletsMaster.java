@@ -23,7 +23,6 @@ import com.breadwallet.tools.util.Utils;
 import com.breadwallet.wallet.abstracts.BaseWalletManager;
 import com.breadwallet.wallet.abstracts.BalanceUpdateListener;
 import com.breadwallet.wallet.wallets.bitcoin.BaseBitcoinWalletManager;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager;
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletEthManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletTokenManager;
@@ -106,10 +105,7 @@ public class WalletsMaster implements WalletEthManager.OnTokenLoadedListener {
                 if (enabled.symbol.equalsIgnoreCase(BaseBitcoinWalletManager.BITCOIN_CURRENCY_CODE)) {
                     //BTC wallet
                     mWallets.add(WalletBitcoinManager.getInstance(app));
-                } else if (enabled.symbol.equalsIgnoreCase(BaseBitcoinWalletManager.BITCASH_CURRENCY_CODE)) {
-                    //BCH wallet
-                    mWallets.add(WalletBchManager.getInstance(app));
-                } else if (enabled.symbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE)) {
+                }  else if (enabled.symbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE)) {
                     //ETH wallet
                     mWallets.add(ethWallet);
                 } else {
@@ -143,11 +139,7 @@ public class WalletsMaster implements WalletEthManager.OnTokenLoadedListener {
     public BaseWalletManager getWalletByIso(Context app, String currencyCode) {
         if (WalletBitcoinManager.BITCOIN_CURRENCY_CODE.equalsIgnoreCase(currencyCode)) {
             return WalletBitcoinManager.getInstance(app);
-        }
-        if (WalletBitcoinManager.BITCASH_CURRENCY_CODE.equalsIgnoreCase(currencyCode)) {
-            return WalletBchManager.getInstance(app);
-        }
-        if (WalletEthManager.ETH_CURRENCY_CODE.equalsIgnoreCase(currencyCode)) {
+        } if (WalletEthManager.ETH_CURRENCY_CODE.equalsIgnoreCase(currencyCode)) {
             return WalletEthManager.getInstance(app.getApplicationContext());
         } else if (isCurrencyCodeErc20(app, currencyCode)) {
             return WalletTokenManager.getTokenWalletByIso(app, currencyCode);

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/Java/Core/CoreLibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/core/Java/Core/CoreLibrary.iml" group="bastoji-mobile1/CoreLibrary" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="bastoji-mobile1/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bastoji-mobile1.iml" filepath="$PROJECT_DIR$/.idea/modules/bastoji-mobile1.iml" group="bastoji-mobile1" />
+    </modules>
+  </component>
+</project>

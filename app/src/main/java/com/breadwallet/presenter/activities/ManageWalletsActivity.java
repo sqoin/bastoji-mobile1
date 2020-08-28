@@ -15,7 +15,6 @@ import com.breadwallet.tools.animation.SimpleItemTouchHelperCallback;
 import com.breadwallet.tools.listeners.OnStartDragListener;
 import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.wallet.WalletsMaster;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBchManager;
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletEthManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletTokenManager;
@@ -65,7 +64,7 @@ public class ManageWalletsActivity extends BaseSettingsActivity implements OnSta
             TokenItem tokenItem = null;
             String tokenSymbol = mTokens.get(i).symbol;
 
-            if (!tokenSymbol.equalsIgnoreCase(WalletBitcoinManager.BITCOIN_CURRENCY_CODE) && !tokenSymbol.equalsIgnoreCase(WalletBchManager.BITCASH_CURRENCY_CODE) &&
+            if (!tokenSymbol.equalsIgnoreCase(WalletBitcoinManager.BITCOIN_CURRENCY_CODE) &&
                     !tokenSymbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE) && !tokenSymbol.equalsIgnoreCase(WalletTokenManager.BRD_CURRENCY_CODE)) {
 
                 BREthereumToken tk = WalletEthManager.getInstance(getApplicationContext()).node.lookupToken(info.contractAddress);
@@ -79,8 +78,7 @@ public class ManageWalletsActivity extends BaseSettingsActivity implements OnSta
             } else if (tokenSymbol.equalsIgnoreCase(WalletBitcoinManager.BITCOIN_CURRENCY_CODE))
                 tokenItem = new TokenItem(null, WalletBitcoinManager.BITCOIN_CURRENCY_CODE, WalletBitcoinManager.NAME, null,true);
 
-            else if (tokenSymbol.equalsIgnoreCase(WalletBchManager.BITCASH_CURRENCY_CODE))
-                tokenItem = new TokenItem(null, WalletBchManager.BITCASH_CURRENCY_CODE, WalletBchManager.NAME, null, true);
+
             else if (tokenSymbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE))
                 tokenItem = new TokenItem(null, WalletEthManager.ETH_CURRENCY_CODE, WalletEthManager.NAME, null, true);
             else if (tokenSymbol.equalsIgnoreCase(WalletTokenManager.BRD_CURRENCY_CODE))
